@@ -6,9 +6,9 @@
     </select>
 
     <insert id="insertUser" parameterType="com.spring.lw.vo.User">
-        insert into user(id, username, password) 
+        insert into user(id, username, password, managecom) 
         values(#{id,jdbcType=INTEGER},#{username,jdbcType=VARCHAR},
-        #{password,jdbcType=VARCHAR});
+        #{password,jdbcType=VARCHAR},#{managecom,jdbcType=CHAR});
     </insert>
 
     <update id="updateUser" parameterType="com.spring.lw.vo.User">
@@ -19,6 +19,9 @@
             </if>
             <if test="password!=null">
                 password=#{password,jdbcType=VARCHAR},
+            </if>
+            <if test="managecom!=null">
+                managecom=#{managecom,jdbcType=CHAR},
             </if>
         </set>
         where id=#{id,jdbcType=INTEGER}
